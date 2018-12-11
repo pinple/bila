@@ -331,3 +331,4 @@ bila/media/
 .env
 .envs/*
 !.envs/.local/
+.idea/inspectionProfiles/Project_Default.xml
