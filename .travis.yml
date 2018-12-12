@@ -20,8 +20,7 @@ before_install:
   - sudo apt-get install -qq libsqlite3-dev libxml2 libxml2-dev libssl-dev libbz2-dev wget curl llvm
   - sudo rm /usr/local/bin/docker-compose
   - sudo curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` -o /usr/local/bin/docker-compose
-  - sudo chmod +x docker-compose
-  - sudo mv docker-compose /usr/local/bin
+  - sudo chmod +x /usr/local/bin/docker-compose
   - docker-compose --version
   - docker-compose -f local.yml up -d
   - docker ps -a
