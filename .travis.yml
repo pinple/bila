@@ -26,4 +26,4 @@ before_install:
   - docker ps -a
 
 script:
-  python manage.py test
+  docker exec bila_django_1 python manage.py test
