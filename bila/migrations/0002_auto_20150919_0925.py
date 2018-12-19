@@ -7,7 +7,7 @@ import wagtail.core.fields
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('puput', '0001_initial'),
+        ('bila', '0001_initial'),
     ]
 
     operations = [
@@ -29,7 +29,7 @@ class Migration(migrations.Migration):
         migrations.AlterField(
             model_name='category',
             name='parent',
-            field=models.ForeignKey(to='puput.Category', related_name='children', null=True, verbose_name='Parent category', blank=True, on_delete=models.SET_NULL),
+            field=models.ForeignKey(to='bila.Category', related_name='children', null=True, verbose_name='Parent category', blank=True, on_delete=models.SET_NULL),
         ),
         migrations.AlterField(
             model_name='entrypage',

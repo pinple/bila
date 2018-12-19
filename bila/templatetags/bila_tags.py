@@ -11,7 +11,7 @@ from ..models import Category, Tag
 register = Library()
 
 
-@register.inclusion_tag('puput/tags/entries_list.html', takes_context=True)
+@register.inclusion_tag('bila/tags/entries_list.html', takes_context=True)
 def recent_entries(context, limit=None):
     blog_page = context['blog_page']
     entries = blog_page.get_entries().order_by('-date')
@@ -21,7 +21,7 @@ def recent_entries(context, limit=None):
     return context
 
 
-@register.inclusion_tag('puput/tags/entries_list.html', takes_context=True)
+@register.inclusion_tag('bila/tags/entries_list.html', takes_context=True)
 def popular_entries(context, limit=None):
     blog_page = context['blog_page']
     entries = blog_page.get_entries().order_by('-num_comments', '-date')
@@ -31,7 +31,7 @@ def popular_entries(context, limit=None):
     return context
 
 
-@register.inclusion_tag('puput/tags/tags_list.html', takes_context=True)
+@register.inclusion_tag('bila/tags/tags_list.html', takes_context=True)
 def tags_list(context, limit=None, tags_qs=None):
     blog_page = context['blog_page']
     if tags_qs:
@@ -44,7 +44,7 @@ def tags_list(context, limit=None, tags_qs=None):
     return context
 
 
-@register.inclusion_tag('puput/tags/categories_list.html', takes_context=True)
+@register.inclusion_tag('bila/tags/categories_list.html', takes_context=True)
 def categories_list(context, categories_qs=None):
     blog_page = context['blog_page']
     if categories_qs:
@@ -55,7 +55,7 @@ def categories_list(context, categories_qs=None):
     return context
 
 
-@register.inclusion_tag('puput/tags/archives_list.html', takes_context=True)
+@register.inclusion_tag('bila/tags/archives_list.html', takes_context=True)
 def archives_list(context):
     blog_page = context['blog_page']
     context['archives'] = blog_page.get_entries().datetimes('date', 'day', order='DESC')
@@ -93,7 +93,7 @@ def show_comments(context):
             'disqus_shortname': blog_page.disqus_shortname,
             'disqus_identifier': entry.id
         }
-        return render_to_string('puput/comments/disqus.html', context=ctx)
+        return render_to_string('bila/comments/disqus.html', context=ctx)
     return ""
 
 
@@ -111,7 +111,7 @@ def post_to_linkendin_url(context, obj_or_url=None):
     return context
 
 
-@register.inclusion_tag('puput/tags/post_to_linkedin.html', takes_context=True)
+@register.inclusion_tag('bila/tags/post_to_linkedin.html', takes_context=True)
 def post_to_linkendin(context, obj_or_url=None, link_text='Post to Linkedin'):
     context = post_to_linkendin_url(context, obj_or_url)
     context['link_text'] = link_text

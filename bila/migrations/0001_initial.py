@@ -2,7 +2,7 @@ from __future__ import unicode_literals
 
 from django.db import models, migrations
 import wagtail.core.fields
-import puput.routes
+import bila.routes
 import datetime
 import django.db.models.deletion
 import modelcluster.contrib.taggit
@@ -39,7 +39,7 @@ class Migration(migrations.Migration):
             options={
                 'verbose_name': 'Blog',
             },
-            bases=(puput.routes.BlogRoutes, 'wagtailcore.page'),
+            bases=(bila.routes.BlogRoutes, 'wagtailcore.page'),
         ),
         migrations.CreateModel(
             name='Category',
@@ -48,7 +48,7 @@ class Migration(migrations.Migration):
                 ('name', models.CharField(unique=True, max_length=80, verbose_name='Category Name')),
                 ('slug', models.SlugField(unique=True, max_length=80)),
                 ('description', models.CharField(max_length=500, blank=True)),
-                ('parent', models.ForeignKey(related_name='children', blank=True, to='puput.Category', null=True, on_delete=models.SET_NULL)),
+                ('parent', models.ForeignKey(related_name='children', blank=True, to='bila.Category', null=True, on_delete=models.SET_NULL)),
             ],
             options={
                 'ordering': ['name'],
@@ -61,7 +61,7 @@ class Migration(migrations.Migration):
             name='CategoryEntryPage',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('category', models.ForeignKey(related_name='+', verbose_name='Category', to='puput.Category', on_delete=models.CASCADE)),
+                ('category', models.ForeignKey(related_name='+', verbose_name='Category', to='bila.Category', on_delete=models.CASCADE)),
             ],
             options={
             },
@@ -73,9 +73,9 @@ class Migration(migrations.Migration):
                 ('page_ptr', models.OneToOneField(parent_link=True, auto_created=True, primary_key=True, serialize=False, to='wagtailcore.Page', on_delete=models.CASCADE)),
                 ('body', wagtail.core.fields.RichTextField(verbose_name='body')),
                 ('date', models.DateTimeField(default=datetime.datetime.today, verbose_name='Post date')),
-                ('excerpt', wagtail.core.fields.RichTextField(help_text='Used to display on puput pages list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt', blank=True)),
+                ('excerpt', wagtail.core.fields.RichTextField(help_text='Used to display on bila pages list. If this field is not filled, a truncate version of body text will be used.', verbose_name='excerpt', blank=True)),
                 ('num_comments', models.IntegerField(default=0, editable=False)),
-                ('categories', models.ManyToManyField(to='puput.Category', through='puput.CategoryEntryPage', blank=True)),
+                ('categories', models.ManyToManyField(to='bila.Category', through='bila.CategoryEntryPage', blank=True)),
                 ('header_image', models.ForeignKey(related_name='+', on_delete=django.db.models.deletion.SET_NULL, verbose_name='Header image', blank=True, to='wagtailimages.Image', null=True)),
             ],
             options={
@@ -88,8 +88,8 @@ class Migration(migrations.Migration):
             name='EntryPageRelated',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('entrypage_from', modelcluster.fields.ParentalKey(related_name='related_entrypage_from', verbose_name='Entry', to='puput.EntryPage')),
-                ('entrypage_to', modelcluster.fields.ParentalKey(related_name='related_entrypage_to', verbose_name='Entry', to='puput.EntryPage')),
+                ('entrypage_from', modelcluster.fields.ParentalKey(related_name='related_entrypage_from', verbose_name='Entry', to='bila.EntryPage')),
+                ('entrypage_to', modelcluster.fields.ParentalKey(related_name='related_entrypage_to', verbose_name='Entry', to='bila.EntryPage')),
             ],
             options={
             },
@@ -99,8 +99,8 @@ class Migration(migrations.Migration):
             name='TagEntryPage',
             fields=[
                 ('id', models.AutoField(verbose_name='ID', serialize=False, auto_created=True, primary_key=True)),
-                ('content_object', modelcluster.fields.ParentalKey(related_name='entry_tags', to='puput.EntryPage')),
-                ('tag', models.ForeignKey(related_name='puput_tagentrypage_items', to='taggit.Tag', on_delete=models.CASCADE)),
+                ('content_object', modelcluster.fields.ParentalKey(related_name='entry_tags', to='bila.EntryPage')),
+                ('tag', models.ForeignKey(related_name='bila_tagentrypage_items', to='taggit.Tag', on_delete=models.CASCADE)),
             ],
             options={
                 'abstract': False,
@@ -110,13 +110,13 @@ class Migration(migrations.Migration):
         migrations.AddField(
             model_name='entrypage',
             name='tags',
-            field=modelcluster.contrib.taggit.ClusterTaggableManager(to='taggit.Tag', through='puput.TagEntryPage', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
+            field=modelcluster.contrib.taggit.ClusterTaggableManager(to='taggit.Tag', through='bila.TagEntryPage', blank=True, help_text='A comma-separated list of tags.', verbose_name='Tags'),
             preserve_default=True,
         ),
         migrations.AddField(
             model_name='categoryentrypage',
             name='page',
-            field=modelcluster.fields.ParentalKey(related_name='entry_categories', to='puput.EntryPage'),
+            field=modelcluster.fields.ParentalKey(related_name='entry_categories', to='bila.EntryPage'),
             preserve_default=True,
         ),
         migrations.CreateModel(

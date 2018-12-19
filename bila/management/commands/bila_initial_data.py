@@ -6,13 +6,13 @@ from wagtail.core.models import Page, Site
 
 
 class Command(BaseCommand):
-    help = "Load Puput initial dummy data"
+    help = "Load Bila initial dummy data"
 
     def handle(self, *args, **options):
         # Get blogpage content type
         blogpage_content_type, created = ContentType.objects.get_or_create(
             model='blogpage',
-            app_label='puput',
+            app_label='bila',
             defaults={'name': 'page'} if DJANGO_VERSION < (1, 8) else {}
         )
 

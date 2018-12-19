@@ -9,7 +9,7 @@ import django.db.models.manager
 class Migration(migrations.Migration):
 
     dependencies = [
-        ('puput', '0003_add_short_feed_description_to_blog_page'),
+        ('bila', '0003_add_short_feed_description_to_blog_page'),
     ]
 
     operations = [

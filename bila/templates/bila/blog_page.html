@@ -1,6 +1,6 @@
-{% extends "puput/base.html" %}
+{% extends "bila/base.html" %}
 
-{% load static i18n wagtailcore_tags wagtailimages_tags puput_tags social_share %}
+{% load static i18n wagtailcore_tags wagtailimages_tags bila_tags social_share %}
 
 {% block title %}
     {% if search_term %}
@@ -52,13 +52,13 @@
         {% for entry in entries %}
             {% entry_url entry blog_page as post_url %}
             <article class="box page-content blog_grid">
-                {% include 'puput/entry_page_header.html' %}
+                {% include 'bila/entry_page_header.html' %}
                 <section>
                     <span class="img-responsive">
                         {% image entry.header_image fill-800x240 as header_image %}
                         <img alt="{{ entry.header_image.title }}" src="{{ header_image.url }}">
                     </span>
-                    {% include 'puput/entry_links.html' %}
+                    {% include 'bila/entry_links.html' %}
                 </section>
                 <section class="article">
                     {% if entry.excerpt %}

@@ -1,4 +1,4 @@
-{% load static i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags wagtailuserbar puput_tags %}
+{% load static i18n wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags wagtailuserbar bila_tags %}
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -28,14 +28,14 @@
     <!--[if lte IE 8]><link rel="stylesheet" href="assets/css/ie8.css" /><![endif]-->
     <link href='//fonts.googleapis.com/css?family=Roboto:400,300,300italic,100italic,100,400italic,500,500italic,700,900,700italic,900italic' rel='stylesheet' type='text/css'>
     {% block css %}
-        <link rel='stylesheet' href="{% static 'puput/css/bootstrap.min.css' %}" type='text/css'/>
-        <link rel="stylesheet" href="{% static 'puput/css/font-awesome.min.css' %}">
+        <link rel='stylesheet' href="{% static 'bila/css/bootstrap.min.css' %}" type='text/css'/>
+        <link rel="stylesheet" href="{% static 'bila/css/font-awesome.min.css' %}">
         <style>
             body {
                 --main-color: {{blog_page.main_color}};
             }
         </style>
-        <link rel="stylesheet" href="{% static 'puput/css/puput.css' %}"/>
+        <link rel="stylesheet" href="{% static 'bila/css/bila.css' %}"/>
     {% endblock %}
 </head>
 <body>
@@ -124,14 +124,14 @@
             <p>
                 Powered by <a href="http://www.djangoproject.com" rel="nofollow">Django</a>,
                 <a href="http://www.wagtail.io" rel="nofollow">Wagtail</a> and
-                <a href="http://github.com/APSL/puput" rel="nofollow">Puput</a>
+                <a href="http://github.com/Neulana/bila" rel="nofollow">bila</a>
             </p>
         </div>
     </div>
 </div>
 {% block js %}
-    <script src="{% static 'puput/js/jquery.min.js' %}"></script>
-    <script src="{% static 'puput/js/puput.js' %}"></script>
+    <script src="{% static 'bila/js/jquery.min.js' %}"></script>
+    <script src="{% static 'bila/js/bila.js' %}"></script>
 {% endblock js %}
 </body>
 </html>
