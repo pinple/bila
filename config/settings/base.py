@@ -3,6 +3,7 @@ Base settings to build other settings files upon.
 """
 
 import environ
+from bila import BILA_APPS
 
 ROOT_DIR = environ.Path(__file__) - 3  # (bila/config/settings/base.py - 3 = bila/)
 APPS_DIR = ROOT_DIR.path('bila')
@@ -73,7 +74,7 @@ LOCAL_APPS = [
     # Your stuff: custom apps go here
 ]
 # https://docs.djangoproject.com/en/dev/ref/settings/#installed-apps
-INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS
+INSTALLED_APPS = DJANGO_APPS + THIRD_PARTY_APPS + LOCAL_APPS + BILA_APPS
 
 # MIGRATIONS
 # ------------------------------------------------------------------------------

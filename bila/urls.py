@@ -6,6 +6,7 @@ from .views import EntryPageServe, EntryPageUpdateCommentsView
 from .utils import strip_prefix_and_ending_slash
 
 
+app_name = "blog"
 urlpatterns = [
     path(
         route='entry_page/<entry_page_id>/update_comments/',
